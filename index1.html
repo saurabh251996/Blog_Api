@@ -1,0 +1,25 @@
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+  const socket = io();
+
+  document.getElementById('like-button').addEventListener('click', () => {
+    console.log('Like button clicked');
+    socket.emit('like', { /* optional data */ });
+  });
+
+  document.getElementById('dislike-button').addEventListener('click', () => {
+    console.log('Dislike button clicked');
+    socket.emit('dislike', { /* optional data */ });
+  });
+
+  socket.on('updateLikes', (updatedLikeCount) => {
+    console.log('Likes updated:', updatedLikeCount);
+    // Update the like count on the webpage
+  });
+
+  socket.on('updateDislikes', (updatedDislikeCount) => {
+    console.log('Dislikes updated:', updatedDislikeCount);
+    // Update the dislike count on the webpage
+  });
+</script>
